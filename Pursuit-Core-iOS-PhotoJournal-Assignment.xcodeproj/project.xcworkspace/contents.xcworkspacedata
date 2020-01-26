@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:Pursuit-Core-iOS-PhotoJournal-Assignment.xcodeproj">
+      location = "self:">
    </FileRef>
 </Workspace>

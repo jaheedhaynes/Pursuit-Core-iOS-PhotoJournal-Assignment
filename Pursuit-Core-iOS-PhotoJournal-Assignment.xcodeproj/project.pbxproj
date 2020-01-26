@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		30B3DF3123DE597E007C3888 /* ImageStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B3DF3023DE597E007C3888 /* ImageStruct.swift */; };
+		30B3DF3423DE5A89007C3888 /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 30B3DF3323DE5A89007C3888 /* ImageKit */; };
+		30B3DF3623DE5AB6007C3888 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B3DF3523DE5AB6007C3888 /* PersistenceHelper.swift */; };
+		30B3DF3823DE5B9A007C3888 /* FileManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B3DF3723DE5B9A007C3888 /* FileManager+Extensions.swift */; };
 		30BE467323DB39A600B74ECA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BE467223DB39A600B74ECA /* AppDelegate.swift */; };
 		30BE467523DB39A600B74ECA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BE467423DB39A600B74ECA /* SceneDelegate.swift */; };
 		30BE467723DB39A600B74ECA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BE467623DB39A600B74ECA /* ViewController.swift */; };
@@ -16,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30B3DF3023DE597E007C3888 /* ImageStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStruct.swift; sourceTree = "<group>"; };
+		30B3DF3523DE5AB6007C3888 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
+		30B3DF3723DE5B9A007C3888 /* FileManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extensions.swift"; sourceTree = "<group>"; };
 		30BE466F23DB39A600B74ECA /* Pursuit-Core-iOS-PhotoJournal-Assignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pursuit-Core-iOS-PhotoJournal-Assignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BE467223DB39A600B74ECA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		30BE467423DB39A600B74ECA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B3DF3423DE5A89007C3888 /* ImageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,6 +66,9 @@
 			children = (
 				30BE467223DB39A600B74ECA /* AppDelegate.swift */,
 				30BE467423DB39A600B74ECA /* SceneDelegate.swift */,
+				30B3DF3523DE5AB6007C3888 /* PersistenceHelper.swift */,
+				30B3DF3723DE5B9A007C3888 /* FileManager+Extensions.swift */,
+				30B3DF3023DE597E007C3888 /* ImageStruct.swift */,
 				30BE467623DB39A600B74ECA /* ViewController.swift */,
 				30BE467823DB39A600B74ECA /* Main.storyboard */,
 				30BE467B23DB39A800B74ECA /* Assets.xcassets */,
@@ -83,6 +94,9 @@
 			dependencies = (
 			);
 			name = "Pursuit-Core-iOS-PhotoJournal-Assignment";
+			packageProductDependencies = (
+				30B3DF3323DE5A89007C3888 /* ImageKit */,
+			);
 			productName = "Pursuit-Core-iOS-PhotoJournal-Assignment";
 			productReference = 30BE466F23DB39A600B74ECA /* Pursuit-Core-iOS-PhotoJournal-Assignment.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 30BE466623DB39A600B74ECA;
+			packageReferences = (
+				30B3DF3223DE5A89007C3888 /* XCRemoteSwiftPackageReference "ImageKit" */,
+			);
 			productRefGroup = 30BE467023DB39A600B74ECA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +155,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30B3DF3123DE597E007C3888 /* ImageStruct.swift in Sources */,
 				30BE467723DB39A600B74ECA /* ViewController.swift in Sources */,
 				30BE467323DB39A600B74ECA /* AppDelegate.swift in Sources */,
+				30B3DF3623DE5AB6007C3888 /* PersistenceHelper.swift in Sources */,
 				30BE467523DB39A600B74ECA /* SceneDelegate.swift in Sources */,
+				30B3DF3823DE5B9A007C3888 /* FileManager+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +358,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		30B3DF3223DE5A89007C3888 /* XCRemoteSwiftPackageReference "ImageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alexpaul/ImageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		30B3DF3323DE5A89007C3888 /* ImageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30B3DF3223DE5A89007C3888 /* XCRemoteSwiftPackageReference "ImageKit" */;
+			productName = ImageKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 30BE466723DB39A600B74ECA /* Project object */;
 }
