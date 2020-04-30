@@ -1,20 +1,21 @@
 //
-//  ViewController.swift
+//  AddImageViewController.swift
 //  Pursuit-Core-iOS-PhotoJournal-Assignment
 //
-//  Created by Jaheed Haynes on 1/24/20.
+//  Created by Jaheed Haynes on 4/29/20.
 //  Copyright © 2020 Jaheed Haynes. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class AddImageViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+       
     }
+    
 
 
 }
-

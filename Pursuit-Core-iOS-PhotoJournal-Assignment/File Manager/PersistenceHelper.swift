@@ -93,7 +93,7 @@ class PersistenceHelper {
     }
     
     // read - load (retrieve) items from documents directory
-    public func loadEvents() throws -> [Image] {
+    public func loadImages() throws -> [Image] {
         // we need access to the filename URL that we are reading from
         let url = FileManager.pathToDocumentsDirectory(with: filename)
         
