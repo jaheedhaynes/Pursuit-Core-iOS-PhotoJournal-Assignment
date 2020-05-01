@@ -25,6 +25,7 @@ class MainViewController: UIViewController {
     var selectedImage: UIImage?{
         didSet{
             appendImage()
+          
         }
     }
     
@@ -123,6 +124,7 @@ extension MainViewController: UICollectionViewDataSource {
         }
         let image = images[indexPath.row]
         cell.configureCell(image)
+        cell.delegate = self
         return cell
     }
     
@@ -131,10 +133,18 @@ extension MainViewController: UICollectionViewDataSource {
 
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let maxWidth: CGFloat = UIScreen.main.bounds.size.width
+//        let itemWidth: CGFloat = maxWidth * 0.40
+//        return CGSize(width: itemWidth, height: itemWidth)
+//    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let maxWidth: CGFloat = UIScreen.main.bounds.size.width
-        let itemWidth: CGFloat = maxWidth * 0.40
-        return CGSize(width: itemWidth, height: itemWidth)
+        
+        return CGSize(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.height * 0.4)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
     }
 }
 
@@ -149,7 +159,7 @@ extension MainViewController: SavePhotoDelegate{
 extension MainViewController: CollectionCellDelegate{
     func cellOptionPressed(photoCell: CollectionViewCell) {
         editMenu(for: photoCell)
-        print("option pressed")
+       
     }
     
     

@@ -33,6 +33,7 @@ class CollectionViewCell: UICollectionViewCell {
     
     @IBAction func editButtonPressed(_ sender: UIButton) {
         delegate?.cellOptionPressed(photoCell: self)
+        print("edit button pressed")
     }
     
     
