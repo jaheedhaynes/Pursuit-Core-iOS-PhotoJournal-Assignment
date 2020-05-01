@@ -41,6 +41,7 @@ class AddImageViewController: UIViewController {
     }
     
     @IBAction func cameraButtonPressed(_ sender: UIButton) {
+        
         imagePicker.sourceType = .camera
         present(imagePicker, animated: true)
     }

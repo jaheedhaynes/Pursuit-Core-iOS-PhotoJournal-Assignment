@@ -21,13 +21,20 @@ class MainViewController: UIViewController {
             self.collectionView.reloadData()
         }
     }
+    
+    var selectedImage: UIImage?{
+        didSet{
+            appendImage()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
          view.backgroundColor = .purple
+        loadImages()
         collectionView.dataSource = self
         collectionView.delegate = self
-        loadImages()
+        
     }
  
     private func loadImages(){
@@ -39,7 +46,7 @@ class MainViewController: UIViewController {
     }
     
     //--------------------------------------------
-    @IBAction func addImageButtonPressed(_ sender: UIButton) {
+    @IBAction func addImageButtonPressed(_ sender: UIBarButtonItem) {
         showAddImageVC()
     }
     
@@ -55,6 +62,10 @@ class MainViewController: UIViewController {
     
     
     private func appendImage(){
+        guard let image = selectedImage else{
+            print("error")
+            return
+        }
             do{
                 images = try dataPersistance.loadItems()
             }catch{
@@ -87,11 +98,11 @@ extension MainViewController: UICollectionViewDataSource {
 
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        let maxWidth: CGFloat = UIScreen.main.bounds.size.width
-//        let itemWidth: CGFloat = maxWidth * 0.80
-//        return CGSize(width: itemWidth, height: itemWidth)
-//    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let maxWidth: CGFloat = UIScreen.main.bounds.size.width
+        let itemWidth: CGFloat = maxWidth * 0.80
+        return CGSize(width: itemWidth, height: itemWidth)
+    }
 }
 
 extension MainViewController: SavePhotoDelegate{
