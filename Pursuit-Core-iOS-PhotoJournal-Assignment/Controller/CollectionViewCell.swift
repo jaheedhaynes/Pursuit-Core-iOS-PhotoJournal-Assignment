@@ -8,13 +8,32 @@
 
 import UIKit
 
+protocol CollectionCellDelegate {
+    func cellOptionPressed(photoCell: Image)
+}
+
 class CollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
     
+    var cellDelegate: Image?
+    var index: IndexPath?
     
+    public func configureCell(_ cell: Image){
+        guard let image = UIImage(data: cell.imageData) else{
+            return
+        }
+        imageView.image = image
+        dateLabel.text = cell.date.description
+        captionLabel.text  = cell.description
+        
+    }
+    
+    @IBAction func editButtonPressed(_ sender: UIButton) {
+       
+    }
     
     
 }
