@@ -8,8 +8,8 @@
 
 import UIKit
 
-protocol CollectionCellDelegate {
-    func cellOptionPressed(photoCell: Image)
+protocol CollectionCellDelegate: AnyObject {
+    func cellOptionPressed(photoCell: CollectionViewCell)
 }
 
 class CollectionViewCell: UICollectionViewCell {
@@ -18,7 +18,7 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
     
-    var cellDelegate: Image?
+    var delegate: CollectionCellDelegate?
     var index: IndexPath?
     
     public func configureCell(_ cell: Image){
@@ -32,7 +32,7 @@ class CollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func editButtonPressed(_ sender: UIButton) {
-       
+        delegate?.cellOptionPressed(photoCell: self)
     }
     
     

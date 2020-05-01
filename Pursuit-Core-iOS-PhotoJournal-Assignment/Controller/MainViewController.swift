@@ -27,16 +27,16 @@ class MainViewController: UIViewController {
             appendImage()
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-         view.backgroundColor = .purple
+        view.backgroundColor = .purple
         loadImages()
         collectionView.dataSource = self
         collectionView.delegate = self
         
     }
- 
+    
     private func loadImages(){
         do{
             images = try dataPersistance.loadItems()
@@ -58,23 +58,56 @@ class MainViewController: UIViewController {
         present(imageVC, animated: true)
     }
     //--------------------------------------------
-
+    
     
     
     private func appendImage(){
         guard let image = selectedImage else{
-            print("error")
+            print("error appending image")
             return
         }
-            do{
-                images = try dataPersistance.loadItems()
-            }catch{
-                print("Error: \(error.localizedDescription)")
+        do{
+            images = try dataPersistance.loadItems()
+        }catch{
+            print("Error: \(error.localizedDescription)")
+        }
+    }
+    
+    private func deleteImage(indexPath: IndexPath) {
+            images.remove(at: indexPath.row)
+            do {
+                try dataPersistance.deleteItem(at: indexPath.row)
+            } catch {
+                print("Error deleting")
             }
+        }
+    
+    private func editMenu(for cell: CollectionViewCell){
+        guard let indexPath = collectionView.indexPath(for: cell) else {
+            return
+        }
+        let optionsMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let delete = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (action) in
+            do{
+                try self!.dataPersistance.deleteItem(at: indexPath.row)
+                self?.loadImages()
+                self?.collectionView.reloadData()
+            }catch{
+                print("could not delete")
+            }
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] (action) in
+            self?.dismiss(animated: true)
+        }
+        optionsMenu.addAction(delete)
+        optionsMenu.addAction(cancel)
+        present(optionsMenu, animated: true, completion: nil)
     }
 }
 
-    
+
+
+
 
 //---------------------------------------------------------------------
 // MARK: EXTENSIONS
@@ -100,7 +133,7 @@ extension MainViewController: UICollectionViewDataSource {
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let maxWidth: CGFloat = UIScreen.main.bounds.size.width
-        let itemWidth: CGFloat = maxWidth * 0.80
+        let itemWidth: CGFloat = maxWidth * 0.40
         return CGSize(width: itemWidth, height: itemWidth)
     }
 }
@@ -108,6 +141,15 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 extension MainViewController: SavePhotoDelegate{
     func didSave(photo: Image) {
         self.images.append(photo)
+    }
+    
+    
+}
+
+extension MainViewController: CollectionCellDelegate{
+    func cellOptionPressed(photoCell: CollectionViewCell) {
+        editMenu(for: photoCell)
+        print("option pressed")
     }
     
     
