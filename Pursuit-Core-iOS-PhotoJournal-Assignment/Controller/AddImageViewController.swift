@@ -12,6 +12,7 @@ import DataPersistence
 
 protocol SavePhotoDelegate: AnyObject {
     func didSave(photo: Image)
+    func editPhoto(origin: Image, new: Image)
 }
 
 class AddImageViewController: UIViewController {
@@ -66,6 +67,7 @@ class AddImageViewController: UIViewController {
         
         images = Image(imageData: photoData, date: Date(), description: textView.text)
         delegate?.didSave(photo: images)
+        delegate?.editPhoto(origin: images, new: images)
         do {
             try dataPersistance.createItem(images)
         } catch {

@@ -87,6 +87,7 @@ class MainViewController: UIViewController {
         guard let indexPath = collectionView.indexPath(for: cell) else {
             return
         }
+       // let image = images[indexPath.row]
         let optionsMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let delete = UIAlertAction(title: "Delete", style: .destructive) { [weak self] (action) in
             do{
@@ -97,10 +98,15 @@ class MainViewController: UIViewController {
                 print("could not delete")
             }
         }
+        let edit = UIAlertAction(title: "Edit", style: .default) { (action) in
+            return
+        }
+        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] (action) in
             self?.dismiss(animated: true)
         }
         optionsMenu.addAction(delete)
+        optionsMenu.addAction(edit)
         optionsMenu.addAction(cancel)
         present(optionsMenu, animated: true, completion: nil)
     }
@@ -149,6 +155,10 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension MainViewController: SavePhotoDelegate{
+    func editPhoto(origin: Image, new: Image) {
+        
+    }
+    
     func didSave(photo: Image) {
         self.images.append(photo)
     }
